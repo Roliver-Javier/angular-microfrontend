@@ -7,10 +7,12 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { HomeComponent } from './home/home.component';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { APP_ROUTES } from './app.routes';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
    imports: [
       BrowserModule,
+      BrowserAnimationsModule,
       DashboardModule,
       RouterModule.forRoot(APP_ROUTES, {
         preloadingStrategy: PreloadAllModules
