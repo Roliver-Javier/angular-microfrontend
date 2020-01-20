@@ -8,6 +8,41 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-  <app-root></app-root>
+  <client-b></client-b>
+
+  <script src="./assets/core-js/core.js"></script>
+
+  <!--
+        Web Component polyfills
+  -->
+  <script src="/assets/webcomponentsjs/bundles/webcomponents-sd-ce.js"></script>
+
+  <!-- Zone.js
+        Consider excluding zone.js when creating
+        custom Elements by using the noop zone.
+
+        If you load zone.js with an additional
+        bundle, delete this line.
+  -->
+  <script src="./assets/zone.js/zone.js"></script>
+
+  <!-- TODO: Add further needed polyfills here ... -->
+
+  <!-- Rx -->
+  <script src="./assets/rxjs/rxjs.umd.js"></script>
+
+  <!-- Angular Packages -->
+  <script src="./assets/core/bundles/core.umd.js"></script>
+  <script src="./assets/common/bundles/common.umd.js"></script>
+  <script src="./assets/common/bundles/common-http.umd.js"></script>
+  <script src="./assets/elements/bundles/elements.umd.js"></script>
+
+  <script src="./assets/forms/bundles/forms.umd.js"></script>
+  <script src="./assets/router/bundles/router.umd.js"></script>
+
+  <!-- TODO: Add further needed Angular libs here ... -->
+
+  <!-- Just needed for prod mode -->
+  <script src="./assets/platform-browser/bundles/platform-browser.umd.js"></script>
 </body>
 </html>

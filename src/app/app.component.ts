@@ -19,13 +19,13 @@ export class AppComponent {
       clients: {
         "client-a": {
           loaded: false,
-          src: 'assets/micro-frontends/client-a/main.js',
+          src: 'assets/micro-frontends/client-a/main-es5.js',
           element: 'client-a',
           route: '/client-a'
         },
         "client-b": {
           loaded: false,
-          src: 'assets/micro-frontends/client-b/main.js',
+          src: 'assets/micro-frontends/client-b/main-es5.js',
           element: 'client-b',
           route: '/client-b'
         }

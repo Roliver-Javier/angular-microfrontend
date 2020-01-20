@@ -22,7 +22,7 @@ export class ShellService {
     );
     setTimeout(() => this.urlChanged(), 0);
     if (config.preload) {
-      this.preloadClients();
+       this.preloadClients();
     }
   }
 
@@ -31,6 +31,7 @@ export class ShellService {
     for (const client in this.config.clients) {
       const entry = this.config.clients[client];
       const route = '#' + entry.route;
+      debugger;
       if (location.hash.startsWith(route)) {
         if (!entry.loaded) {
           this.load(client);
