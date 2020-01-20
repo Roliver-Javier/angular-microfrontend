@@ -22,6 +22,7 @@ export class LazyDashboardTileService {
         this.moduleRef = moduleFactory.create(
           this.injector
         ).instance;
+        console.debug('moduleRef',this.moduleRef);
       })
       .catch(err => {
         console.error('error loading module', err);

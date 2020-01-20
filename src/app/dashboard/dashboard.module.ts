@@ -10,6 +10,9 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     CommonModule,
     NgxChartsModule
   ],
+  exports: [
+    DashboardComponent
+  ],
   declarations: [
     DashboardComponent,
     DashboardTileComponent
