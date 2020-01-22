@@ -1,17 +1,13 @@
-import { HomeComponent } from './home/home.component';
-import { Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
-export const APP_ROUTES: Routes = [
-  {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  },
-  {
-    path: 'home',
-    component: HomeComponent
-  }, {
-    path: '*',
-    redirectTo: 'home'
-  }
+export const routes: Routes = [
+  // { path: 'client-a/page1', component: Page1Component },
+  // { path: 'client-b/page2', component: Page2Component}
 ];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }

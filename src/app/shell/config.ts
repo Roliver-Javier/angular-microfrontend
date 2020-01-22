@@ -1,3 +1,4 @@
+
 export interface ClientConfig {
   loaded: boolean;
   src: string | string[];
@@ -6,7 +7,7 @@ export interface ClientConfig {
 }
 
 export interface ClientConfigs {
-  [name: string]: ClientConfig;
+  [name: string]: ClientConfig
 }
 
 export interface ShellConfig {
