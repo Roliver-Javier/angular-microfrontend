@@ -103,6 +103,7 @@ export class ShellService {
   }
 
   navigate(url: string) {
+    debugger;
     const pos = location.hash.indexOf('?');
     const query = pos !== -1? location.hash.substr(pos): '';
     location.hash = url + query;

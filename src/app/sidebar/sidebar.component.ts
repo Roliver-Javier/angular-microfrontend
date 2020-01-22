@@ -1,20 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ShellService } from '../shell/shell.service';
 
+
 @Component({
-  selector: 'sidebar-cmp',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css']
+    selector: 'sidebar-cmp',
+    templateUrl: 'sidebar.component.html',
 })
-export class SidebarComponent implements OnInit {
 
-  constructor(private shellService: ShellService) { }
+export class SidebarComponent {
+    constructor(private shellService: ShellService) {
+    }
 
-  ngOnInit() {
-  }
-
-  navigate(url: string){
-    this.shellService.navigate(url);
-  }
-
+    navigate(url: string) {
+        this.shellService.navigate(url);
+    }
 }
