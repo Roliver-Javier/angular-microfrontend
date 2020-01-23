@@ -1,8 +1,10 @@
 import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
    declarations: [
@@ -10,9 +12,15 @@ import { SidebarComponent } from './sidebar/sidebar.component';
       SidebarComponent,
       NavbarComponent
    ],
-   imports: [ BrowserModule ],
-   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+   imports: [
+      BrowserModule,
+   ],
+   schemas: [
+      CUSTOM_ELEMENTS_SCHEMA
+   ],
    providers: [],
-   bootstrap: [ AppComponent ]
+   bootstrap: [
+      AppComponent
+   ]
 })
 export class AppModule { }
