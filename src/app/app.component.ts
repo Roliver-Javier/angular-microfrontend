@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ShellService } from './shell/shell.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { ShellService } from './shell/shell.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'dashboard-elments';
   constructor(private shellService: ShellService) {
   }

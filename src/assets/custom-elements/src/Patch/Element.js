@@ -1,13 +1,3 @@
-/**
- * @license
- * Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
- * This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
- * The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
- * The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
- * Code distributed by Google as part of the polymer project is also
- * subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
- */
-
 import Native from './Native.js';
 import CustomElementInternals from '../CustomElementInternals.js';
 import CEState from '../CustomElementState.js';
@@ -29,7 +19,6 @@ export default function(internals) {
        */
       function(init) {
         const shadowRoot = Native.Element_attachShadow.call(this, init);
-        internals.patchNode(shadowRoot);
         this.__CE_shadowRoot = shadowRoot;
         return shadowRoot;
       });
@@ -53,7 +42,7 @@ export default function(internals) {
         let removedElements = undefined;
         if (isConnected) {
           removedElements = [];
-          internals.forEachElement(this, element => {
+          Utilities.walkDeepDescendantElements(this, element => {
             if (element !== this) {
               removedElements.push(element);
             }
@@ -73,7 +62,7 @@ export default function(internals) {
 
         // Only create custom elements if this element's owner document is
         // associated with the registry.
-        if (!this.ownerDocument.__CE_registry) {
+        if (!this.ownerDocument.__CE_hasRegistry) {
           internals.patchTree(this);
         } else {
           internals.patchAndUpgradeTree(this);
@@ -88,7 +77,8 @@ export default function(internals) {
   } else if (Native.HTMLElement_innerHTML && Native.HTMLElement_innerHTML.get) {
     patch_innerHTML(HTMLElement.prototype, Native.HTMLElement_innerHTML);
   } else {
-    internals.addElementPatch(function(element) {
+
+    internals.addPatch(function(element) {
       patch_innerHTML(element, {
         enumerable: true,
         configurable: true,
@@ -96,9 +86,7 @@ export default function(internals) {
         // of the element and returning the resulting element's `innerHTML`.
         // TODO: Is this too expensive?
         get: /** @this {Element} */ function() {
-          return /** @type {!Element} */ (
-                     Native.Node_cloneNode.call(this, true))
-              .innerHTML;
+          return Native.Node_cloneNode.call(this, true).innerHTML;
         },
         // Implements setting `innerHTML` by creating an unpatched element,
         // setting `innerHTML` of that element and replacing the target
@@ -111,17 +99,15 @@ export default function(internals) {
           /** @type {!Node} */
           const content = isTemplate ? (/** @type {!HTMLTemplateElement} */
             (this)).content : this;
-          /** @type {!Element} */
-          const rawElement = Native.Document_createElementNS.call(document,
-              this.namespaceURI, this.localName);
+          /** @type {!Node} */
+          const rawElement = Native.Document_createElement.call(document,
+            this.localName);
           rawElement.innerHTML = assignedValue;
 
           while (content.childNodes.length > 0) {
             Native.Node_removeChild.call(content, content.childNodes[0]);
           }
-          const container = isTemplate ?
-              /** @type {!HTMLTemplateElement} */ (rawElement).content :
-              rawElement;
+          const container = isTemplate ? rawElement.content : rawElement;
           while (container.childNodes.length > 0) {
             Native.Node_appendChild.call(content, container.childNodes[0]);
           }
@@ -238,6 +224,8 @@ export default function(internals) {
     patch_insertAdjacentElement(HTMLElement.prototype, Native.HTMLElement_insertAdjacentElement);
   } else if (Native.Element_insertAdjacentElement) {
     patch_insertAdjacentElement(Element.prototype, Native.Element_insertAdjacentElement);
+  } else {
+    console.warn('Custom Elements: `Element#insertAdjacentElement` was not patched.');
   }
 
 
@@ -271,7 +259,8 @@ export default function(internals) {
         if (position === "beforebegin") {
           const marker = this.previousSibling;
           baseMethod.call(this, position, text);
-          upgradeNodesInRange(marker || /** @type {!Node} */ (this.parentNode.firstChild), this);
+          upgradeNodesInRange(
+            /** @type {!Node} */ (marker || this.parentNode.firstChild), this);
         } else if (position === "afterbegin") {
           const marker = this.firstChild;
           baseMethod.call(this, position, text);
@@ -279,7 +268,7 @@ export default function(internals) {
         } else if (position === "beforeend") {
           const marker = this.lastChild;
           baseMethod.call(this, position, text);
-          upgradeNodesInRange(marker || /** @type {!Node} */ (this.firstChild), null);
+          upgradeNodesInRange(marker || this.firstChild, null);
         } else if (position === "afterend") {
           const marker = this.nextSibling;
           baseMethod.call(this, position, text);
@@ -295,6 +284,8 @@ export default function(internals) {
     patch_insertAdjacentHTML(HTMLElement.prototype, Native.HTMLElement_insertAdjacentHTML);
   } else if (Native.Element_insertAdjacentHTML) {
     patch_insertAdjacentHTML(Element.prototype, Native.Element_insertAdjacentHTML);
+  } else {
+    console.warn('Custom Elements: `Element#insertAdjacentHTML` was not patched.');
   }
 
 

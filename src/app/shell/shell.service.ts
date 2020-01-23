@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { ClientConfigs, ShellConfig } from './config';
+import { BehaviorSubject } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShellService {
-
+  urlManageBS = new BehaviorSubject<string>(null);
   constructor() { }
 
   private config: ShellConfig;
@@ -13,9 +15,13 @@ export class ShellService {
   init(config: ShellConfig) {
     this.config = config;
     if (!location.hash && config.initialRoute) {
-      location.hash = config.initialRoute;
+      this.urlManageBS.next(config.initialRoute);
     }
-    window.addEventListener("hashchange", () => this.urlChanged());
+    this.urlManageBS.pipe(
+      tap(val => location.hash = val),
+      tap( _ => this.urlChanged())
+    ).subscribe();
+
     setTimeout(() => this.urlChanged(), 0);
     if (config.preload) {
       this.preloadClients();
@@ -23,6 +29,10 @@ export class ShellService {
   }
 
   urlChanged() {
+    this.newMethod();
+  }
+
+  private newMethod() {
     for (const client in this.config.clients) {
       const entry = this.config.clients[client];
       const route = '#' + entry.route;
@@ -106,7 +116,8 @@ export class ShellService {
     debugger;
     const pos = location.hash.indexOf('?');
     const query = pos !== -1? location.hash.substr(pos): '';
-    location.hash = url + query;
+    // location.hash = url + query;
+    this.urlManageBS.next((url + query));
   }
 
 

@@ -1,13 +1,3 @@
-/**
- * @license
- * Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
- * This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
- * The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
- * The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
- * Code distributed by Google as part of the polymer project is also
- * subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
- */
-
 import Native from './Native.js';
 import CustomElementInternals from '../CustomElementInternals.js';
 import * as Utilities from '../Utilities.js';
@@ -28,7 +18,7 @@ export default function(internals) {
      */
     function(node, refNode) {
       if (node instanceof DocumentFragment) {
-        const insertedNodes = Utilities.childrenFromFragment(node);
+        const insertedNodes = Array.prototype.slice.apply(node.childNodes);
         const nativeResult = Native.Node_insertBefore.call(this, node, refNode);
 
         // DocumentFragments can't be connected, so `disconnectTree` will never
@@ -43,10 +33,10 @@ export default function(internals) {
         return nativeResult;
       }
 
-      const nodeWasConnectedElement = node instanceof Element && Utilities.isConnected(node);
+      const nodeWasConnected = Utilities.isConnected(node);
       const nativeResult = Native.Node_insertBefore.call(this, node, refNode);
 
-      if (nodeWasConnectedElement) {
+      if (nodeWasConnected) {
         internals.disconnectTree(node);
       }
 
@@ -65,7 +55,7 @@ export default function(internals) {
      */
     function(node) {
       if (node instanceof DocumentFragment) {
-        const insertedNodes = Utilities.childrenFromFragment(node);
+        const insertedNodes = Array.prototype.slice.apply(node.childNodes);
         const nativeResult = Native.Node_appendChild.call(this, node);
 
         // DocumentFragments can't be connected, so `disconnectTree` will never
@@ -80,10 +70,10 @@ export default function(internals) {
         return nativeResult;
       }
 
-      const nodeWasConnectedElement = node instanceof Element && Utilities.isConnected(node);
+      const nodeWasConnected = Utilities.isConnected(node);
       const nativeResult = Native.Node_appendChild.call(this, node);
 
-      if (nodeWasConnectedElement) {
+      if (nodeWasConnected) {
         internals.disconnectTree(node);
       }
 
@@ -101,10 +91,10 @@ export default function(internals) {
      * @return {!Node}
      */
     function(deep) {
-      const clone = Native.Node_cloneNode.call(this, !!deep);
+      const clone = Native.Node_cloneNode.call(this, deep);
       // Only create custom elements if this element's owner document is
       // associated with the registry.
-      if (!this.ownerDocument.__CE_registry) {
+      if (!this.ownerDocument.__CE_hasRegistry) {
         internals.patchTree(clone);
       } else {
         internals.patchAndUpgradeTree(clone);
@@ -119,10 +109,10 @@ export default function(internals) {
      * @return {!Node}
      */
     function(node) {
-      const nodeWasConnectedElement = node instanceof Element && Utilities.isConnected(node);
+      const nodeWasConnected = Utilities.isConnected(node);
       const nativeResult = Native.Node_removeChild.call(this, node);
 
-      if (nodeWasConnectedElement) {
+      if (nodeWasConnected) {
         internals.disconnectTree(node);
       }
 
@@ -138,7 +128,7 @@ export default function(internals) {
      */
     function(nodeToInsert, nodeToRemove) {
       if (nodeToInsert instanceof DocumentFragment) {
-        const insertedNodes = Utilities.childrenFromFragment(nodeToInsert);
+        const insertedNodes = Array.prototype.slice.apply(nodeToInsert.childNodes);
         const nativeResult = Native.Node_replaceChild.call(this, nodeToInsert, nodeToRemove);
 
         // DocumentFragments can't be connected, so `disconnectTree` will never
@@ -154,8 +144,7 @@ export default function(internals) {
         return nativeResult;
       }
 
-      const nodeToInsertWasConnectedElement = nodeToInsert instanceof Element &&
-        Utilities.isConnected(nodeToInsert);
+      const nodeToInsertWasConnected = Utilities.isConnected(nodeToInsert);
       const nativeResult = Native.Node_replaceChild.call(this, nodeToInsert, nodeToRemove);
       const thisIsConnected = Utilities.isConnected(this);
 
@@ -163,7 +152,7 @@ export default function(internals) {
         internals.disconnectTree(nodeToRemove);
       }
 
-      if (nodeToInsertWasConnectedElement) {
+      if (nodeToInsertWasConnected) {
         internals.disconnectTree(nodeToInsert);
       }
 
@@ -218,7 +207,7 @@ export default function(internals) {
   if (Native.Node_textContent && Native.Node_textContent.get) {
     patch_textContent(Node.prototype, Native.Node_textContent);
   } else {
-    internals.addNodePatch(function(element) {
+    internals.addPatch(function(element) {
       patch_textContent(element, {
         enumerable: true,
         configurable: true,
@@ -228,11 +217,8 @@ export default function(internals) {
           /** @type {!Array<string>} */
           const parts = [];
 
-          for (let n = this.firstChild; n; n = n.nextSibling) {
-            if (n.nodeType === Node.COMMENT_NODE) {
-              continue;
-            }
-            parts.push(n.textContent);
+          for (let i = 0; i < this.childNodes.length; i++) {
+            parts.push(this.childNodes[i].textContent);
           }
 
           return parts.join('');
@@ -241,11 +227,7 @@ export default function(internals) {
           while (this.firstChild) {
             Native.Node_removeChild.call(this, this.firstChild);
           }
-          // `textContent = null | undefined | ''` does not result in
-          // a TextNode childNode
-          if (assignedValue != null && assignedValue !== '') {
-            Native.Node_appendChild.call(this, document.createTextNode(assignedValue));
-          }
+          Native.Node_appendChild.call(this, document.createTextNode(assignedValue));
         },
       });
     });
