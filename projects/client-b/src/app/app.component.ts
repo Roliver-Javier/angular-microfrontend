@@ -3,11 +3,21 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'client-b',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `
+  <div id="client-b">
+    <div class="card">
+      <div class="content">
+        <a routerLink="client-b/page1" queryParamsHandling="merge">Passenger Search</a> | <a routerLink="client-b/page2" queryParamsHandling="merge">Details</a>
+      </div>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+`,
+styles: [`
+  #client-b { border: navy dashed 5px; padding: 10px }
+`],
 })
 export class AppComponent {
-  title = 'client-b';
   constructor(private route: ActivatedRoute) {
     route.queryParams.subscribe(params => {
       console.debug('params', params);

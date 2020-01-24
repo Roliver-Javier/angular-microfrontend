@@ -1,5 +1,5 @@
 /**
- * @license Angular v8.0.1
+ * @license Angular v8.2.14
  * (c) 2010-2019 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -60,18 +60,17 @@
      * found in the LICENSE file at https://angular.io/license
      */
     /**
-     * `LocationStrategy` is responsible for representing and reading route state
-     * from the browser's URL. Angular provides two strategies:
-     * {@link HashLocationStrategy} and {@link PathLocationStrategy}.
+     * Enables the `Location` service to read route state from the browser's URL.
+     * Angular provides two strategies:
+     * `HashLocationStrategy` and `PathLocationStrategy`.
      *
-     * This is used under the hood of the {@link Location} service.
-     *
-     * Applications should use the {@link Router} or {@link Location} services to
+     * Applications should use the `Router` or `Location` services to
      * interact with application route state.
      *
-     * For instance, {@link HashLocationStrategy} produces URLs like
-     * `http://example.com#/foo`, and {@link PathLocationStrategy} produces
-     * `http://example.com/foo` as an equivalent URL.
+     * For instance, `HashLocationStrategy` produces URLs like
+     * <code class="no-auto-link">http://example.com#/foo</code>,
+     * and `PathLocationStrategy` produces
+     * <code class="no-auto-link">http://example.com/foo</code> as an equivalent URL.
      *
      * See these two classes for more.
      *
@@ -147,6 +146,16 @@
         return __assign.apply(this, arguments);
     };
 
+    function __rest(s, e) {
+        var t = {};
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+            t[p] = s[p];
+        if (s != null && typeof Object.getOwnPropertySymbols === "function")
+            for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0)
+                t[p[i]] = s[p[i]];
+        return t;
+    }
+
     function __decorate(decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -160,6 +169,47 @@
 
     function __metadata(metadataKey, metadataValue) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
+    }
+
+    function __awaiter(thisArg, _arguments, P, generator) {
+        return new (P || (P = Promise))(function (resolve, reject) {
+            function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+            function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+            function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+            step((generator = generator.apply(thisArg, _arguments || [])).next());
+        });
+    }
+
+    function __generator(thisArg, body) {
+        var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+        return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+        function verb(n) { return function (v) { return step([n, v]); }; }
+        function step(op) {
+            if (f) throw new TypeError("Generator is already executing.");
+            while (_) try {
+                if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+                if (y = 0, t) op = [op[0] & 2, t.value];
+                switch (op[0]) {
+                    case 0: case 1: t = op; break;
+                    case 4: _.label++; return { value: op[1], done: false };
+                    case 5: _.label++; y = op[1]; op = [0]; continue;
+                    case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                    default:
+                        if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                        if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                        if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                        if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                        if (t[2]) _.ops.pop();
+                        _.trys.pop(); continue;
+                }
+                op = body.call(thisArg, _);
+            } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+            if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+        }
+    }
+
+    function __exportStar(m, exports) {
+        for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
     }
 
     function __values(o) {
@@ -190,6 +240,59 @@
         return ar;
     }
 
+    function __spread() {
+        for (var ar = [], i = 0; i < arguments.length; i++)
+            ar = ar.concat(__read(arguments[i]));
+        return ar;
+    }
+
+    function __await(v) {
+        return this instanceof __await ? (this.v = v, this) : new __await(v);
+    }
+
+    function __asyncGenerator(thisArg, _arguments, generator) {
+        if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+        var g = generator.apply(thisArg, _arguments || []), i, q = [];
+        return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
+        function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
+        function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
+        function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r); }
+        function fulfill(value) { resume("next", value); }
+        function reject(value) { resume("throw", value); }
+        function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
+    }
+
+    function __asyncDelegator(o) {
+        var i, p;
+        return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
+        function verb(n, f) { i[n] = o[n] ? function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; } : f; }
+    }
+
+    function __asyncValues(o) {
+        if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+        var m = o[Symbol.asyncIterator], i;
+        return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
+        function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
+        function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
+    }
+
+    function __makeTemplateObject(cooked, raw) {
+        if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+        return cooked;
+    };
+
+    function __importStar(mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+        result.default = mod;
+        return result;
+    }
+
+    function __importDefault(mod) {
+        return (mod && mod.__esModule) ? mod : { default: mod };
+    }
+
     /**
      * @license
      * Copyright Google Inc. All Rights Reserved.
@@ -202,12 +305,12 @@
      *
      * A service that applications can use to interact with a browser's URL.
      *
-     * Depending on the {@link LocationStrategy} used, `Location` will either persist
+     * Depending on the `LocationStrategy` used, `Location` persists
      * to the URL's path or the URL's hash segment.
      *
      * @usageNotes
      *
-     * It's better to use the {@link Router#navigate} service to trigger route changes. Use
+     * It's better to use the `Router#navigate` service to trigger route changes. Use
      * `Location` only if you need to interact with or create normalized URLs outside of
      * routing.
      *
@@ -220,7 +323,8 @@
      *
      * ### Example
      *
-     * {@example common/location/ts/path_location_component.ts region='LocationComponent'}
+     * <code-example path='common/location/ts/path_location_component.ts'
+     * region='LocationComponent'></code-example>
      *
      * @publicApi
      */
@@ -246,9 +350,9 @@
         }
         Location_1 = Location;
         /**
-         * Returns the normalized URL path.
+         * Normalizes the URL path for this location.
          *
-         * @param includeHash Whether path has an anchor fragment.
+         * @param includeHash True to include an anchor fragment in the path.
          *
          * @returns The normalized URL path.
          */
@@ -259,16 +363,17 @@
             return this.normalize(this._platformStrategy.path(includeHash));
         };
         /**
-         * Returns the current value of the history.state object.
+         * Reports the current state of the location history.
+         * @returns The current value of the `history.state` object.
          */
         Location.prototype.getState = function () { return this._platformLocation.getState(); };
         /**
          * Normalizes the given path and compares to the current normalized path.
          *
-         * @param path The given URL path
-         * @param query Query parameters
+         * @param path The given URL path.
+         * @param query Query parameters.
          *
-         * @returns `true` if the given URL path is equal to the current normalized path, `false`
+         * @returns True if the given URL path is equal to the current normalized path, false
          * otherwise.
          */
         Location.prototype.isCurrentPathEqualTo = function (path, query) {
@@ -276,22 +381,20 @@
             return this.path() == this.normalize(path + Location_1.normalizeQueryParams(query));
         };
         /**
-         * Given a string representing a URL, returns the URL path after stripping the
-         * trailing slashes.
+         * Normalizes a URL path by stripping any trailing slashes.
          *
          * @param url String representing a URL.
          *
-         * @returns Normalized URL string.
+         * @returns The normalized URL string.
          */
         Location.prototype.normalize = function (url) {
             return Location_1.stripTrailingSlash(_stripBaseHref(this._baseHref, _stripIndexHtml(url)));
         };
         /**
-         * Given a string representing a URL, returns the platform-specific external URL path.
-         * If the given URL doesn't begin with a leading slash (`'/'`), this method adds one
-         * before normalizing. This method also adds a hash if `HashLocationStrategy` is
-         * used, or the `APP_BASE_HREF` if the `PathLocationStrategy` is in use.
-         *
+         * Normalizes an external URL path.
+         * If the given URL doesn't begin with a leading slash (`'/'`), adds one
+         * before normalizing. Adds a hash if `HashLocationStrategy` is
+         * in use, or the `APP_BASE_HREF` if the `PathLocationStrategy` is in use.
          *
          * @param url String representing a URL.
          *
@@ -305,12 +408,12 @@
         };
         // TODO: rename this method to pushState
         /**
-         * Changes the browsers URL to a normalized version of the given URL, and pushes a
+         * Changes the browser's URL to a normalized version of a given URL, and pushes a
          * new item onto the platform's history.
          *
-         * @param path  URL path to normalizze
-         * @param query Query parameters
-         * @param state Location history state
+         * @param path  URL path to normalize.
+         * @param query Query parameters.
+         * @param state Location history state.
          *
          */
         Location.prototype.go = function (path, query, state) {
@@ -323,9 +426,9 @@
          * Changes the browser's URL to a normalized version of the given URL, and replaces
          * the top item on the platform's history stack.
          *
-         * @param path  URL path to normalizze
-         * @param query Query parameters
-         * @param state Location history state
+         * @param path  URL path to normalize.
+         * @param query Query parameters.
+         * @param state Location history state.
          */
         Location.prototype.replaceState = function (path, query, state) {
             if (query === void 0) { query = ''; }
@@ -342,8 +445,10 @@
          */
         Location.prototype.back = function () { this._platformStrategy.back(); };
         /**
-         * Register URL change listeners. This API can be used to catch updates performed by the Angular
-         * framework. These are not detectible through "popstate" or "hashchange" events.
+         * Registers a URL change listener. Use to catch updates performed by the Angular
+         * framework that are not detectible through "popstate" or "hashchange" events.
+         *
+         * @param fn The change handler function, which take a URL and a location history state.
          */
         Location.prototype.onUrlChange = function (fn) {
             var _this = this;
@@ -356,7 +461,7 @@
             this._urlChangeListeners.forEach(function (fn) { return fn(url, state); });
         };
         /**
-         * Subscribe to the platform's `popState` events.
+         * Subscribes to the platform's `popState` events.
          *
          * @param value Event that is triggered when the state history changes.
          * @param exception The exception to throw.
@@ -367,24 +472,23 @@
             return this._subject.subscribe({ next: onNext, error: onThrow, complete: onReturn });
         };
         /**
-         * Given a string of url parameters, prepend with `?` if needed, otherwise return the
-         * parameters as is.
+         * Normalizes URL parameters by prepending with `?` if needed.
          *
-         *  @param  params String of URL parameters
+         * @param  params String of URL parameters.
          *
-         *  @returns URL parameters prepended with `?` or the parameters as is.
+         * @returns The normalized URL parameters string.
          */
         Location.normalizeQueryParams = function (params) {
             return params && params[0] !== '?' ? '?' + params : params;
         };
         /**
-         * Given 2 parts of a URL, join them with a slash if needed.
+         * Joins two parts of a URL with a slash if needed.
          *
          * @param start  URL string
          * @param end    URL string
          *
          *
-         * @returns Given URL strings joined with a slash, if needed.
+         * @returns The joined URL string.
          */
         Location.joinWithSlash = function (start, end) {
             if (start.length == 0) {
@@ -409,14 +513,13 @@
             return start + '/' + end;
         };
         /**
-         * If URL has a trailing slash, remove it, otherwise return the URL as is. The
-         * method looks for the first occurrence of either `#`, `?`, or the end of the
+         * Removes a trailing slash from a URL string if needed.
+         * Looks for the first occurrence of either `#`, `?`, or the end of the
          * line as `/` characters and removes the trailing slash if one exists.
          *
-         * @param url URL string
+         * @param url URL string.
          *
-         * @returns Returns a URL string after removing the trailing slash if one exists, otherwise
-         * returns the string as is.
+         * @returns The URL string, modified if needed.
          */
         Location.stripTrailingSlash = function (url) {
             var match = url.match(/#|\?|$/);
@@ -604,75 +707,6 @@
      * Use of this source code is governed by an MIT-style license that can be
      * found in the LICENSE file at https://angular.io/license
      */
-
-    /**
-     * @license
-     * Copyright Google Inc. All Rights Reserved.
-     *
-     * Use of this source code is governed by an MIT-style license that can be
-     * found in the LICENSE file at https://angular.io/license
-     */
-    // THIS CODE IS GENERATED - DO NOT MODIFY
-    // See angular/tools/gulp-tasks/cldr/extract.js
-    var u = undefined;
-    function plural(n) {
-        var i = Math.floor(Math.abs(n)), v = n.toString().replace(/^[^.]*\.?/, '').length;
-        if (i === 1 && v === 0)
-            return 1;
-        return 5;
-    }
-    var localeEn = [
-        'en', [['a', 'p'], ['AM', 'PM'], u], [['AM', 'PM'], u, u],
-        [
-            ['S', 'M', 'T', 'W', 'T', 'F', 'S'], ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-            ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
-        ],
-        u,
-        [
-            ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
-            ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-            [
-                'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
-                'October', 'November', 'December'
-            ]
-        ],
-        u, [['B', 'A'], ['BC', 'AD'], ['Before Christ', 'Anno Domini']], 0, [6, 0],
-        ['M/d/yy', 'MMM d, y', 'MMMM d, y', 'EEEE, MMMM d, y'],
-        ['h:mm a', 'h:mm:ss a', 'h:mm:ss a z', 'h:mm:ss a zzzz'], ['{1}, {0}', u, '{1} \'at\' {0}', u],
-        ['.', ',', ';', '%', '+', '-', 'E', '×', '‰', '∞', 'NaN', ':'],
-        ['#,##0.###', '#,##0%', '¤#,##0.00', '#E0'], '$', 'US Dollar', {}, plural
-    ];
-
-    /**
-     * @license
-     * Copyright Google Inc. All Rights Reserved.
-     *
-     * Use of this source code is governed by an MIT-style license that can be
-     * found in the LICENSE file at https://angular.io/license
-     */
-    /**
-     * @publicApi
-     */
-    var LOCALE_DATA = {};
-    /**
-     * Register global data to be used internally by Angular. See the
-     * ["I18n guide"](guide/i18n#i18n-pipes) to know how to import additional locale data.
-     *
-     * @publicApi
-     */
-    // The signature registerLocaleData(data: any, extraData?: any) is deprecated since v5.1
-    function registerLocaleData(data, localeId, extraData) {
-        if (typeof localeId !== 'string') {
-            extraData = localeId;
-            localeId = data[0 /* LocaleId */];
-        }
-        localeId = localeId.toLowerCase().replace(/_/g, '-');
-        LOCALE_DATA[localeId] = data;
-        if (extraData) {
-            LOCALE_DATA[localeId][19 /* ExtraData */] = extraData;
-        }
-    }
 
     /**
      * @license
@@ -971,7 +1005,7 @@
      * @publicApi
      */
     function getLocaleId(locale) {
-        return findLocaleData(locale)[0 /* LocaleId */];
+        return core.ɵfindLocaleData(locale)[core.ɵLocaleDataIndex.LocaleId];
     }
     /**
      * Retrieves day period strings for the given locale.
@@ -985,8 +1019,8 @@
      * @publicApi
      */
     function getLocaleDayPeriods(locale, formStyle, width) {
-        var data = findLocaleData(locale);
-        var amPmData = [data[1 /* DayPeriodsFormat */], data[2 /* DayPeriodsStandalone */]];
+        var data = core.ɵfindLocaleData(locale);
+        var amPmData = [data[core.ɵLocaleDataIndex.DayPeriodsFormat], data[core.ɵLocaleDataIndex.DayPeriodsStandalone]];
         var amPm = getLastDefinedValue(amPmData, formStyle);
         return getLastDefinedValue(amPm, width);
     }
@@ -1003,8 +1037,8 @@
      * @publicApi
      */
     function getLocaleDayNames(locale, formStyle, width) {
-        var data = findLocaleData(locale);
-        var daysData = [data[3 /* DaysFormat */], data[4 /* DaysStandalone */]];
+        var data = core.ɵfindLocaleData(locale);
+        var daysData = [data[core.ɵLocaleDataIndex.DaysFormat], data[core.ɵLocaleDataIndex.DaysStandalone]];
         var days = getLastDefinedValue(daysData, formStyle);
         return getLastDefinedValue(days, width);
     }
@@ -1021,8 +1055,8 @@
      * @publicApi
      */
     function getLocaleMonthNames(locale, formStyle, width) {
-        var data = findLocaleData(locale);
-        var monthsData = [data[5 /* MonthsFormat */], data[6 /* MonthsStandalone */]];
+        var data = core.ɵfindLocaleData(locale);
+        var monthsData = [data[core.ɵLocaleDataIndex.MonthsFormat], data[core.ɵLocaleDataIndex.MonthsStandalone]];
         var months = getLastDefinedValue(monthsData, formStyle);
         return getLastDefinedValue(months, width);
     }
@@ -1039,8 +1073,8 @@
      * @publicApi
      */
     function getLocaleEraNames(locale, width) {
-        var data = findLocaleData(locale);
-        var erasData = data[7 /* Eras */];
+        var data = core.ɵfindLocaleData(locale);
+        var erasData = data[core.ɵLocaleDataIndex.Eras];
         return getLastDefinedValue(erasData, width);
     }
     /**
@@ -1055,8 +1089,8 @@
      * @publicApi
      */
     function getLocaleFirstDayOfWeek(locale) {
-        var data = findLocaleData(locale);
-        return data[8 /* FirstDayOfWeek */];
+        var data = core.ɵfindLocaleData(locale);
+        return data[core.ɵLocaleDataIndex.FirstDayOfWeek];
     }
     /**
      * Range of week days that are considered the week-end for the given locale.
@@ -1068,8 +1102,8 @@
      * @publicApi
      */
     function getLocaleWeekEndRange(locale) {
-        var data = findLocaleData(locale);
-        return data[9 /* WeekendRange */];
+        var data = core.ɵfindLocaleData(locale);
+        return data[core.ɵLocaleDataIndex.WeekendRange];
     }
     /**
      * Retrieves a localized date-value formating string.
@@ -1083,8 +1117,8 @@
      * @publicApi
      */
     function getLocaleDateFormat(locale, width) {
-        var data = findLocaleData(locale);
-        return getLastDefinedValue(data[10 /* DateFormat */], width);
+        var data = core.ɵfindLocaleData(locale);
+        return getLastDefinedValue(data[core.ɵLocaleDataIndex.DateFormat], width);
     }
     /**
      * Retrieves a localized time-value formatting string.
@@ -1098,8 +1132,8 @@
      * @publicApi
      */
     function getLocaleTimeFormat(locale, width) {
-        var data = findLocaleData(locale);
-        return getLastDefinedValue(data[11 /* TimeFormat */], width);
+        var data = core.ɵfindLocaleData(locale);
+        return getLastDefinedValue(data[core.ɵLocaleDataIndex.TimeFormat], width);
     }
     /**
      * Retrieves a localized date-time formatting string.
@@ -1113,8 +1147,8 @@
      * @publicApi
      */
     function getLocaleDateTimeFormat(locale, width) {
-        var data = findLocaleData(locale);
-        var dateTimeFormatData = data[12 /* DateTimeFormat */];
+        var data = core.ɵfindLocaleData(locale);
+        var dateTimeFormatData = data[core.ɵLocaleDataIndex.DateTimeFormat];
         return getLastDefinedValue(dateTimeFormatData, width);
     }
     /**
@@ -1128,14 +1162,14 @@
      * @publicApi
      */
     function getLocaleNumberSymbol(locale, symbol) {
-        var data = findLocaleData(locale);
-        var res = data[13 /* NumberSymbols */][symbol];
+        var data = core.ɵfindLocaleData(locale);
+        var res = data[core.ɵLocaleDataIndex.NumberSymbols][symbol];
         if (typeof res === 'undefined') {
             if (symbol === exports.NumberSymbol.CurrencyDecimal) {
-                return data[13 /* NumberSymbols */][exports.NumberSymbol.Decimal];
+                return data[core.ɵLocaleDataIndex.NumberSymbols][exports.NumberSymbol.Decimal];
             }
             else if (symbol === exports.NumberSymbol.CurrencyGroup) {
-                return data[13 /* NumberSymbols */][exports.NumberSymbol.Group];
+                return data[core.ɵLocaleDataIndex.NumberSymbols][exports.NumberSymbol.Group];
             }
         }
         return res;
@@ -1176,8 +1210,8 @@
      * @publicApi
      */
     function getLocaleNumberFormat(locale, type) {
-        var data = findLocaleData(locale);
-        return data[14 /* NumberFormats */][type];
+        var data = core.ɵfindLocaleData(locale);
+        return data[core.ɵLocaleDataIndex.NumberFormats][type];
     }
     /**
      * Retrieves the symbol used to represent the currency for the main country
@@ -1191,8 +1225,8 @@
      * @publicApi
      */
     function getLocaleCurrencySymbol(locale) {
-        var data = findLocaleData(locale);
-        return data[15 /* CurrencySymbol */] || null;
+        var data = core.ɵfindLocaleData(locale);
+        return data[core.ɵLocaleDataIndex.CurrencySymbol] || null;
     }
     /**
      * Retrieves the name of the currency for the main country corresponding
@@ -1205,8 +1239,8 @@
      * @publicApi
      */
     function getLocaleCurrencyName(locale) {
-        var data = findLocaleData(locale);
-        return data[16 /* CurrencyName */] || null;
+        var data = core.ɵfindLocaleData(locale);
+        return data[core.ɵLocaleDataIndex.CurrencyName] || null;
     }
     /**
      * Retrieves the currency values for a given locale.
@@ -1215,26 +1249,17 @@
      * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n)
      */
     function getLocaleCurrencies(locale) {
-        var data = findLocaleData(locale);
-        return data[17 /* Currencies */];
+        var data = core.ɵfindLocaleData(locale);
+        return data[core.ɵLocaleDataIndex.Currencies];
     }
     /**
-     * Retrieves the plural function used by ICU expressions to determine the plural case to use
-     * for a given locale.
-     * @param locale A locale code for the locale format rules to use.
-     * @returns The plural function for the locale.
-     * @see `NgPlural`
-     * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n)
-     *
+     * @alias core/ɵgetLocalePluralCase
      * @publicApi
      */
-    function getLocalePluralCase(locale) {
-        var data = findLocaleData(locale);
-        return data[18 /* PluralCase */];
-    }
+    var getLocalePluralCase = core.ɵgetLocalePluralCase;
     function checkFullData(data) {
-        if (!data[19 /* ExtraData */]) {
-            throw new Error("Missing extra locale data for the locale \"" + data[0 /* LocaleId */] + "\". Use \"registerLocaleData\" to load new data. See the \"I18n guide\" on angular.io to know more.");
+        if (!data[core.ɵLocaleDataIndex.ExtraData]) {
+            throw new Error("Missing extra locale data for the locale \"" + data[core.ɵLocaleDataIndex.LocaleId] + "\". Use \"registerLocaleData\" to load new data. See the \"I18n guide\" on angular.io to know more.");
         }
     }
     /**
@@ -1260,9 +1285,9 @@
      * @publicApi
      */
     function getLocaleExtraDayPeriodRules(locale) {
-        var data = findLocaleData(locale);
+        var data = core.ɵfindLocaleData(locale);
         checkFullData(data);
-        var rules = data[19 /* ExtraData */][2 /* ExtraDayPeriodsRules */] || [];
+        var rules = data[core.ɵLocaleDataIndex.ExtraData][2 /* ExtraDayPeriodsRules */] || [];
         return rules.map(function (rule) {
             if (typeof rule === 'string') {
                 return extractTime(rule);
@@ -1288,11 +1313,11 @@
      * @publicApi
      */
     function getLocaleExtraDayPeriods(locale, formStyle, width) {
-        var data = findLocaleData(locale);
+        var data = core.ɵfindLocaleData(locale);
         checkFullData(data);
         var dayPeriodsData = [
-            data[19 /* ExtraData */][0 /* ExtraDayPeriodFormats */],
-            data[19 /* ExtraData */][1 /* ExtraDayPeriodStandalone */]
+            data[core.ɵLocaleDataIndex.ExtraData][0 /* ExtraDayPeriodFormats */],
+            data[core.ɵLocaleDataIndex.ExtraData][1 /* ExtraDayPeriodStandalone */]
         ];
         var dayPeriods = getLastDefinedValue(dayPeriodsData, formStyle) || [];
         return getLastDefinedValue(dayPeriods, width) || [];
@@ -1324,32 +1349,6 @@
     function extractTime(time) {
         var _a = __read(time.split(':'), 2), h = _a[0], m = _a[1];
         return { hours: +h, minutes: +m };
-    }
-    /**
-     * Finds the locale data for a given locale.
-     *
-     * @param locale The locale code.
-     * @returns The locale data.
-     * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n)
-     *
-     * @publicApi
-     */
-    function findLocaleData(locale) {
-        var normalizedLocale = locale.toLowerCase().replace(/_/g, '-');
-        var match = LOCALE_DATA[normalizedLocale];
-        if (match) {
-            return match;
-        }
-        // let's try to find a parent locale
-        var parentLocale = normalizedLocale.split('-')[0];
-        match = LOCALE_DATA[parentLocale];
-        if (match) {
-            return match;
-        }
-        if (parentLocale === 'en') {
-            return localeEn;
-        }
-        throw new Error("Missing locale data for the locale \"" + locale + "\".");
     }
     /**
      * Retrieves the currency symbol for a given currency code.
@@ -2171,7 +2170,8 @@
      * such as "$" or "Canadian Dollar". Used in output string, but does not affect the operation
      * of the function.
      * @param currencyCode The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217)
-     * currency code to use in the result string, such as `USD` for the US dollar and `EUR` for the euro.
+     * currency code, such as `USD` for the US dollar and `EUR` for the euro.
+     * Used to determine the number of digits in the decimal part.
      * @param digitInfo Decimal representation options, specified by a string in the following format:
      * `{minIntegerDigits}.{minFractionDigits}-{maxFractionDigits}`. See `DecimalPipe` for more details.
      *
@@ -2904,6 +2904,32 @@
      * Use of this source code is governed by an MIT-style license that can be
      * found in the LICENSE file at https://angular.io/license
      */
+    /**
+     * Register global data to be used internally by Angular. See the
+     * ["I18n guide"](guide/i18n#i18n-pipes) to know how to import additional locale data.
+     *
+     * @publicApi
+     */
+    // The signature registerLocaleData(data: any, extraData?: any) is deprecated since v5.1
+    function registerLocaleData(data, localeId, extraData) {
+        if (typeof localeId !== 'string') {
+            extraData = localeId;
+            localeId = data[core.ɵLocaleDataIndex.LocaleId];
+        }
+        localeId = localeId.toLowerCase().replace(/_/g, '-');
+        core.ɵLOCALE_DATA[localeId] = data;
+        if (extraData) {
+            core.ɵLOCALE_DATA[localeId][core.ɵLocaleDataIndex.ExtraData] = extraData;
+        }
+    }
+
+    /**
+     * @license
+     * Copyright Google Inc. All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
     function parseCookieValue(cookieStr, name) {
         var e_1, _a;
         name = encodeURIComponent(name);
@@ -3390,11 +3416,12 @@
     var ngClassDirectiveDef__PRE_R3__ = undefined;
     var ɵ0 = function () { }, ɵ1 = function () { }, ɵ2 = function (rf, ctx, elIndex) {
         if (rf & 1 /* Create */) {
-            core.ɵɵelementHostStyling();
+            core.ɵɵallocHostVars(1);
+            core.ɵɵstyling();
         }
         if (rf & 2 /* Update */) {
-            core.ɵɵelementHostStylingMap(ctx.getValue());
-            core.ɵɵelementHostStylingApply();
+            core.ɵɵclassMap(ctx.getValue());
+            core.ɵɵstylingApply();
         }
     };
     // used when the VE is not present (note the directive will
@@ -3841,14 +3868,14 @@
             var insertTuples = [];
             changes.forEachOperation(function (item, adjustedPreviousIndex, currentIndex) {
                 if (item.previousIndex == null) {
-                    var view = _this._viewContainer.createEmbeddedView(_this._template, new NgForOfContext(null, _this._ngForOf, -1, -1), currentIndex);
+                    var view = _this._viewContainer.createEmbeddedView(_this._template, new NgForOfContext(null, _this._ngForOf, -1, -1), currentIndex === null ? undefined : currentIndex);
                     var tuple = new RecordViewTuple(item, view);
                     insertTuples.push(tuple);
                 }
                 else if (currentIndex == null) {
-                    _this._viewContainer.remove(adjustedPreviousIndex);
+                    _this._viewContainer.remove(adjustedPreviousIndex === null ? undefined : adjustedPreviousIndex);
                 }
-                else {
+                else if (adjustedPreviousIndex !== null) {
                     var view = _this._viewContainer.get(adjustedPreviousIndex);
                     _this._viewContainer.move(view, currentIndex);
                     var tuple = new RecordViewTuple(item, view);
@@ -4129,15 +4156,6 @@
                 }
             }
         };
-        /**
-         * Assert the correct type of the expression bound to the `ngIf` input within the template.
-         *
-         * The presence of this method is a signal to the Ivy template type check compiler that when the
-         * `NgIf` structural directive renders its template, the type of the expression bound to `ngIf`
-         * should be narrowed in some way. For `NgIf`, it is narrowed to be non-null, which allows the
-         * strictNullChecks feature of TypeScript to work with `NgIf`.
-         */
-        NgIf.ngTemplateGuard_ngIf = function (dir, expr) { return true; };
         __decorate([
             core.Input(),
             __metadata("design:type", Object),
@@ -4641,11 +4659,11 @@
     var ngStyleDirectiveDef__PRE_R3__ = undefined;
     var ɵ0$1 = function () { }, ɵ1$1 = function () { }, ɵ2$1 = function (rf, ctx, elIndex) {
         if (rf & 1 /* Create */) {
-            core.ɵɵelementHostStyling();
+            core.ɵɵstyling();
         }
         if (rf & 2 /* Update */) {
-            core.ɵɵelementHostStylingMap(null, ctx.getValue());
-            core.ɵɵelementHostStylingApply();
+            core.ɵɵstyleMap(ctx.getValue());
+            core.ɵɵstylingApply();
         }
     };
     // used when the VE is not present (note the directive will
@@ -5822,8 +5840,8 @@
          * @param format The date/time components to include, using predefined options or a
          * custom format string.
          * @param timezone A timezone offset (such as `'+0430'`), or a standard
-         * UTC/GMT or continental US timezone abbreviation. Default is
-         * the local system timezone of the end-user's machine.
+         * UTC/GMT or continental US timezone abbreviation.
+         * When not supplied, uses the end-user's local system timezone.
          * @param locale A locale code for the locale format rules to use.
          * When not supplied, uses the value of `LOCALE_ID`, which is `en-US` by default.
          * See [Setting your app locale](guide/i18n#setting-up-the-locale-of-your-app).
@@ -6498,7 +6516,7 @@
      * A DI Token representing the main rendering context. In a browser this is the DOM Document.
      *
      * Note: Document might not be available in the Application Context when Application and Rendering
-     * Contexts are not the same (e.g. when running the application into a Web Worker).
+     * Contexts are not the same (e.g. when running the application in a Web Worker).
      *
      * @publicApi
      */
@@ -6554,7 +6572,7 @@
     /**
      * @publicApi
      */
-    var VERSION = new core.Version('8.0.1');
+    var VERSION = new core.Version('8.2.14');
 
     /**
      * @license
@@ -6575,6 +6593,7 @@
         // See #23917
         /** @nocollapse */
         ViewportScroller.ngInjectableDef = core.ɵɵdefineInjectable({
+            token: ViewportScroller,
             providedIn: 'root',
             factory: function () { return new BrowserViewportScroller(core.ɵɵinject(DOCUMENT), window, core.ɵɵinject(core.ErrorHandler)); }
         });
@@ -6751,18 +6770,17 @@
      * Generated bundle index. Do not edit.
      */
 
-    exports.ɵangular_packages_common_common_e = COMMON_DIRECTIVES;
-    exports.ɵangular_packages_common_common_j = NgClassImplProvider;
-    exports.ɵangular_packages_common_common_i = NgClassImplProvider__PRE_R3__;
-    exports.ɵangular_packages_common_common_h = NgClassR3Impl;
-    exports.ɵangular_packages_common_common_m = NgStyleImplProvider;
-    exports.ɵangular_packages_common_common_l = NgStyleImplProvider__PRE_R3__;
-    exports.ɵangular_packages_common_common_k = NgStyleR3Impl;
-    exports.ɵangular_packages_common_common_d = findLocaleData;
+    exports.ɵangular_packages_common_common_c = COMMON_DIRECTIVES;
+    exports.ɵangular_packages_common_common_h = NgClassImplProvider;
+    exports.ɵangular_packages_common_common_g = NgClassImplProvider__PRE_R3__;
+    exports.ɵangular_packages_common_common_f = NgClassR3Impl;
+    exports.ɵangular_packages_common_common_k = NgStyleImplProvider;
+    exports.ɵangular_packages_common_common_j = NgStyleImplProvider__PRE_R3__;
+    exports.ɵangular_packages_common_common_i = NgStyleR3Impl;
     exports.ɵangular_packages_common_common_a = DEPRECATED_PLURAL_FN;
     exports.ɵangular_packages_common_common_b = getPluralCase;
-    exports.ɵangular_packages_common_common_g = COMMON_DEPRECATED_I18N_PIPES;
-    exports.ɵangular_packages_common_common_f = COMMON_PIPES;
+    exports.ɵangular_packages_common_common_e = COMMON_DEPRECATED_I18N_PIPES;
+    exports.ɵangular_packages_common_common_d = COMMON_PIPES;
     exports.ɵregisterLocaleData = registerLocaleData;
     exports.registerLocaleData = registerLocaleData;
     exports.formatDate = formatDate;

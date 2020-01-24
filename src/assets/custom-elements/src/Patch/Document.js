@@ -1,5 +1,16 @@
+/**
+ * @license
+ * Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+ * This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+ * The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+ * The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+ * Code distributed by Google as part of the polymer project is also
+ * subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+ */
+
 import Native from './Native.js';
 import CustomElementInternals from '../CustomElementInternals.js';
+import CEState from '../CustomElementState.js';
 import * as Utilities from '../Utilities.js';
 
 import PatchParentNode from './Interface/ParentNode.js';
@@ -15,18 +26,7 @@ export default function(internals) {
      * @return {!Element}
      */
     function(localName) {
-      // Only create custom elements if this document is associated with the registry.
-      if (this.__CE_hasRegistry) {
-        const definition = internals.localNameToDefinition(localName);
-        if (definition) {
-          return new (definition.constructor)();
-        }
-      }
-
-      const result = /** @type {!Element} */
-        (Native.Document_createElement.call(this, localName));
-      internals.patch(result);
-      return result;
+      return internals.createAnElement(this, localName, null);
     });
 
   Utilities.setPropertyUnchecked(Document.prototype, 'importNode',
@@ -37,17 +37,15 @@ export default function(internals) {
      * @return {!Node}
      */
     function(node, deep) {
-      const clone = Native.Document_importNode.call(this, node, deep);
+      const clone = /** @type {!Node} */ (Native.Document_importNode.call(this, node, !!deep));
       // Only create custom elements if this document is associated with the registry.
-      if (!this.__CE_hasRegistry) {
+      if (!this.__CE_registry) {
         internals.patchTree(clone);
       } else {
         internals.patchAndUpgradeTree(clone);
       }
       return clone;
     });
-
-  const NS_HTML = "http://www.w3.org/1999/xhtml";
 
   Utilities.setPropertyUnchecked(Document.prototype, 'createElementNS',
     /**
@@ -57,18 +55,7 @@ export default function(internals) {
      * @return {!Element}
      */
     function(namespace, localName) {
-      // Only create custom elements if this document is associated with the registry.
-      if (this.__CE_hasRegistry && (namespace === null || namespace === NS_HTML)) {
-        const definition = internals.localNameToDefinition(localName);
-        if (definition) {
-          return new (definition.constructor)();
-        }
-      }
-
-      const result = /** @type {!Element} */
-        (Native.Document_createElementNS.call(this, namespace, localName));
-      internals.patch(result);
-      return result;
+      return internals.createAnElement(this, localName, namespace);
     });
 
   PatchParentNode(internals, Document.prototype, {

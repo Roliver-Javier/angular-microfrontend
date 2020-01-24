@@ -19,12 +19,15 @@ import PatchElement from './Patch/Element.js';
 
 const priorCustomElements = window['customElements'];
 
-if (!priorCustomElements ||
-     priorCustomElements['forcePolyfill'] ||
-     (typeof priorCustomElements['define'] != 'function') ||
-     (typeof priorCustomElements['get'] != 'function')) {
+function installPolyfill() {
+  const noDocumentConstructionObserver = priorCustomElements && priorCustomElements['noDocumentConstructionObserver'];
+  const shadyDomFastWalk = priorCustomElements && priorCustomElements['shadyDomFastWalk'];
+
   /** @type {!CustomElementInternals} */
-  const internals = new CustomElementInternals();
+  const internals = new CustomElementInternals({
+    noDocumentConstructionObserver,
+    shadyDomFastWalk
+  });
 
   PatchHTMLElement(internals);
   PatchDocument(internals);
@@ -32,15 +35,25 @@ if (!priorCustomElements ||
   PatchNode(internals);
   PatchElement(internals);
 
-  // The main document is always associated with the registry.
-  document.__CE_hasRegistry = true;
-
-  /** @type {!CustomElementRegistry} */
   const customElements = new CustomElementRegistry(internals);
+
+  // The main document is associated with the global registry.
+  document.__CE_registry = customElements;
 
   Object.defineProperty(window, 'customElements', {
     configurable: true,
     enumerable: true,
     value: customElements,
   });
+};
+
+if (!priorCustomElements ||
+     priorCustomElements['forcePolyfill'] ||
+     (typeof priorCustomElements['define'] != 'function') ||
+     (typeof priorCustomElements['get'] != 'function')) {
+  installPolyfill();
 }
+
+// This is NOT public API and is only meant to work around a GC bug in older
+// versions of Safari that randomly removes the polyfill during tests.
+window['__CE_installPolyfill'] = installPolyfill;

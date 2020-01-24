@@ -6,6 +6,7 @@ import { Page1Component } from './page1/page1.component';
 import { Page2Component } from './page2/page2.component';
 
 import { RouterModule } from '@angular/router';
+import { EmptyComponent } from './empty/empty.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -16,14 +17,16 @@ import { ReactiveFormsModule } from '@angular/forms';
       { path: 'client-b', children: [
         { path: 'page1', component: Page1Component },
         { path: 'page2', component: Page2Component },
-      ]}
+      ]},
+      { path: '**', component: EmptyComponent }
     ], { useHash: true }),
     ReactiveFormsModule
   ],
   declarations: [
     AppComponent,
     Page1Component,
-    Page2Component
+    Page2Component,
+    EmptyComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
@@ -31,5 +34,5 @@ import { ReactiveFormsModule } from '@angular/forms';
   entryComponents: [
   ]
 })
-export class AppModule {
+export class AppModule { 
 }

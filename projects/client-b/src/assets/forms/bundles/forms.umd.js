@@ -1,5 +1,5 @@
 /**
- * @license Angular v8.0.1
+ * @license Angular v8.2.14
  * (c) 2010-2019 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -50,6 +50,16 @@
         return __assign.apply(this, arguments);
     };
 
+    function __rest(s, e) {
+        var t = {};
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+            t[p] = s[p];
+        if (s != null && typeof Object.getOwnPropertySymbols === "function")
+            for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0)
+                t[p[i]] = s[p[i]];
+        return t;
+    }
+
     function __decorate(decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -63,6 +73,47 @@
 
     function __metadata(metadataKey, metadataValue) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
+    }
+
+    function __awaiter(thisArg, _arguments, P, generator) {
+        return new (P || (P = Promise))(function (resolve, reject) {
+            function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+            function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+            function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+            step((generator = generator.apply(thisArg, _arguments || [])).next());
+        });
+    }
+
+    function __generator(thisArg, body) {
+        var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+        return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+        function verb(n) { return function (v) { return step([n, v]); }; }
+        function step(op) {
+            if (f) throw new TypeError("Generator is already executing.");
+            while (_) try {
+                if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+                if (y = 0, t) op = [op[0] & 2, t.value];
+                switch (op[0]) {
+                    case 0: case 1: t = op; break;
+                    case 4: _.label++; return { value: op[1], done: false };
+                    case 5: _.label++; y = op[1]; op = [0]; continue;
+                    case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                    default:
+                        if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                        if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                        if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                        if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                        if (t[2]) _.ops.pop();
+                        _.trys.pop(); continue;
+                }
+                op = body.call(thisArg, _);
+            } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+            if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+        }
+    }
+
+    function __exportStar(m, exports) {
+        for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
     }
 
     function __values(o) {
@@ -97,6 +148,53 @@
         for (var ar = [], i = 0; i < arguments.length; i++)
             ar = ar.concat(__read(arguments[i]));
         return ar;
+    }
+
+    function __await(v) {
+        return this instanceof __await ? (this.v = v, this) : new __await(v);
+    }
+
+    function __asyncGenerator(thisArg, _arguments, generator) {
+        if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+        var g = generator.apply(thisArg, _arguments || []), i, q = [];
+        return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
+        function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
+        function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
+        function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r); }
+        function fulfill(value) { resume("next", value); }
+        function reject(value) { resume("throw", value); }
+        function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
+    }
+
+    function __asyncDelegator(o) {
+        var i, p;
+        return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
+        function verb(n, f) { i[n] = o[n] ? function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; } : f; }
+    }
+
+    function __asyncValues(o) {
+        if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+        var m = o[Symbol.asyncIterator], i;
+        return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
+        function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
+        function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
+    }
+
+    function __makeTemplateObject(cooked, raw) {
+        if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+        return cooked;
+    };
+
+    function __importStar(mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+        result.default = mod;
+        return result;
+    }
+
+    function __importDefault(mod) {
+        return (mod && mod.__esModule) ? mod : { default: mod };
     }
 
     /**
@@ -879,7 +977,37 @@
      * @publicApi
      */
     var NG_ASYNC_VALIDATORS = new core.InjectionToken('NgAsyncValidators');
-    var EMAIL_REGEXP = /^(?=.{1,254}$)(?=.{1,64}@)[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+(\.[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*$/;
+    /**
+     * A regular expression that matches valid e-mail addresses.
+     *
+     * At a high level, this regexp matches e-mail addresses of the format `local-part@tld`, where:
+     * - `local-part` consists of one or more of the allowed characters (alphanumeric and some
+     *   punctuation symbols).
+     * - `local-part` cannot begin or end with a period (`.`).
+     * - `local-part` cannot be longer than 64 characters.
+     * - `tld` consists of one or more `labels` separated by periods (`.`). For example `localhost` or
+     *   `foo.com`.
+     * - A `label` consists of one or more of the allowed characters (alphanumeric, dashes (`-`) and
+     *   periods (`.`)).
+     * - A `label` cannot begin or end with a dash (`-`) or a period (`.`).
+     * - A `label` cannot be longer than 63 characters.
+     * - The whole address cannot be longer than 254 characters.
+     *
+     * ## Implementation background
+     *
+     * This regexp was ported over from AngularJS (see there for git history):
+     * https://github.com/angular/angular.js/blob/c133ef836/src/ng/directive/input.js#L27
+     * It is based on the
+     * [WHATWG version](https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address) with
+     * some enhancements to incorporate more RFC rules (such as rules related to domain names and the
+     * lengths of different parts of the address). The main differences from the WHATWG version are:
+     *   - Disallow `local-part` to begin or end with a period (`.`).
+     *   - Disallow `local-part` length to exceed 64 characters.
+     *   - Disallow total address length to exceed 254 characters.
+     *
+     * See [this commit](https://github.com/angular/angular.js/commit/f3f5cf72e) for more details.
+     */
+    var EMAIL_REGEXP = /^(?=.{1,254}$)(?=.{1,64}@)[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
     /**
      * @description
      * Provides a set of built-in validators that can be used by form controls.
@@ -912,6 +1040,8 @@
          * @returns A validator function that returns an error map with the
          * `min` property if the validation check fails, otherwise `null`.
          *
+         * @see `updateValueAndValidity()`
+         *
          */
         Validators.min = function (min) {
             return function (control) {
@@ -942,6 +1072,8 @@
          * @returns A validator function that returns an error map with the
          * `max` property if the validation check fails, otherwise `null`.
          *
+         * @see `updateValueAndValidity()`
+         *
          */
         Validators.max = function (max) {
             return function (control) {
@@ -971,6 +1103,8 @@
          * @returns An error map with the `required` property
          * if the validation check fails, otherwise `null`.
          *
+         * @see `updateValueAndValidity()`
+         *
          */
         Validators.required = function (control) {
             return isEmptyInputValue(control.value) ? { 'required': true } : null;
@@ -992,6 +1126,9 @@
          *
          * @returns An error map that contains the `required` property
          * set to `true` if the validation check fails, otherwise `null`.
+         *
+         * @see `updateValueAndValidity()`
+         *
          */
         Validators.requiredTrue = function (control) {
             return control.value === true ? null : { 'required': true };
@@ -999,6 +1136,20 @@
         /**
          * @description
          * Validator that requires the control's value pass an email validation test.
+         *
+         * Tests the value using a [regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)
+         * pattern suitable for common usecases. The pattern is based on the definition of a valid email
+         * address in the [WHATWG HTML specification](https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address)
+         * with some enhancements to incorporate more RFC rules (such as rules related to domain names and
+         * the lengths of different parts of the address).
+         *
+         * The differences from the WHATWG version include:
+         * - Disallow `local-part` (the part before the `@` symbol) to begin or end with a period (`.`).
+         * - Disallow `local-part` to be longer than 64 characters.
+         * - Disallow the whole address to be longer than 254 characters.
+         *
+         * If this pattern does not satisfy your business needs, you can use `Validators.pattern()` to
+         * validate the value against a different pattern.
          *
          * @usageNotes
          *
@@ -1012,6 +1163,8 @@
          *
          * @returns An error map with the `email` property
          * if the validation check fails, otherwise `null`.
+         *
+         * @see `updateValueAndValidity()`
          *
          */
         Validators.email = function (control) {
@@ -1042,6 +1195,9 @@
          *
          * @returns A validator function that returns an error map with the
          * `minlength` if the validation check fails, otherwise `null`.
+         *
+         * @see `updateValueAndValidity()`
+         *
          */
         Validators.minLength = function (minLength) {
             return function (control) {
@@ -1076,6 +1232,9 @@
          *
          * @returns A validator function that returns an error map with the
          * `maxlength` property if the validation check fails, otherwise `null`.
+         *
+         * @see `updateValueAndValidity()`
+         *
          */
         Validators.maxLength = function (maxLength) {
             return function (control) {
@@ -1089,11 +1248,6 @@
          * @description
          * Validator that requires the control's value to match a regex pattern. This validator is also
          * provided by default if you use the HTML5 `pattern` attribute.
-         *
-         * Note that if a Regexp is provided, the Regexp is used as is to test the values. On the other
-         * hand, if a string is passed, the `^` character is prepended and the `$` character is
-         * appended to the provided string (if not already present), and the resulting regular
-         * expression is used to test the values.
          *
          * @usageNotes
          *
@@ -1109,8 +1263,16 @@
          * <input pattern="[a-zA-Z ]*">
          * ```
          *
+         * @param pattern A regular expression to be used as is to test the values, or a string.
+         * If a string is passed, the `^` character is prepended and the `$` character is
+         * appended to the provided string (if not already present), and the resulting regular
+         * expression is used to test the values.
+         *
          * @returns A validator function that returns an error map with the
          * `pattern` property if the validation check fails, otherwise `null`.
+         *
+         * @see `updateValueAndValidity()`
+         *
          */
         Validators.pattern = function (pattern) {
             if (!pattern)
@@ -1142,6 +1304,9 @@
         /**
          * @description
          * Validator that performs no operation.
+         *
+         * @see `updateValueAndValidity()`
+         *
          */
         Validators.nullValidator = function (control) { return null; };
         Validators.compose = function (validators) {
@@ -1161,7 +1326,10 @@
          *
          * @returns A validator function that returns an error map with the
          * merged error objects of the async validators if the validation check fails, otherwise `null`.
-        */
+         *
+         * @see `updateValueAndValidity()`
+         *
+         */
         Validators.composeAsync = function (validators) {
             if (!validators)
                 return null;
@@ -1425,8 +1593,6 @@
         /**
          * @description
          * A lifecycle method called when the directive is initialized. For internal use only.
-         *
-         * @param changes A object of key/value pairs for the set of changed inputs.
          */
         RadioControlValueAccessor.prototype.ngOnInit = function () {
             this._control = this._injector.get(NgControl);
@@ -1436,8 +1602,6 @@
         /**
          * @description
          * Lifecycle method called before the directive's instance is destroyed. For internal use only.
-         *
-         * @param changes A object of key/value pairs for the set of changed inputs.
          */
         RadioControlValueAccessor.prototype.ngOnDestroy = function () { this._registry.remove(this); };
         /**
@@ -1971,6 +2135,12 @@
     function _extractId$1(valueString) {
         return valueString.split(':')[0];
     }
+    /** Mock interface for HTMLCollection */
+    var HTMLCollection = /** @class */ (function () {
+        function HTMLCollection() {
+        }
+        return HTMLCollection;
+    }());
     /**
      * @description
      * The `ControlValueAccessor` for writing multi-select control values and listening to multi-select control
@@ -2668,6 +2838,10 @@
         /**
          * Sets the synchronous validators that are active on this control.  Calling
          * this overwrites any existing sync validators.
+         *
+         * When you add or remove a validator at run time, you must call
+         * `updateValueAndValidity()` for the new validation to take effect.
+         *
          */
         AbstractControl.prototype.setValidators = function (newValidator) {
             this.validator = coerceToValidator(newValidator);
@@ -2675,16 +2849,28 @@
         /**
          * Sets the async validators that are active on this control. Calling this
          * overwrites any existing async validators.
+         *
+         * When you add or remove a validator at run time, you must call
+         * `updateValueAndValidity()` for the new validation to take effect.
+         *
          */
         AbstractControl.prototype.setAsyncValidators = function (newValidator) {
             this.asyncValidator = coerceToAsyncValidator(newValidator);
         };
         /**
          * Empties out the sync validator list.
+         *
+         * When you add or remove a validator at run time, you must call
+         * `updateValueAndValidity()` for the new validation to take effect.
+         *
          */
         AbstractControl.prototype.clearValidators = function () { this.validator = null; };
         /**
          * Empties out the async validator list.
+         *
+         * When you add or remove a validator at run time, you must call
+         * `updateValueAndValidity()` for the new validation to take effect.
+         *
          */
         AbstractControl.prototype.clearAsyncValidators = function () { this.asyncValidator = null; };
         /**
@@ -3564,7 +3750,7 @@
          * Reports false for disabled controls. If you'd like to check for existence in the group
          * only, use {@link AbstractControl#get get} instead.
          *
-         * @param name The control name to check for existence in the collection
+         * @param controlName The control name to check for existence in the collection
          *
          * @returns false for disabled controls, true otherwise.
          */
@@ -3591,7 +3777,7 @@
          * ```
          *
          * @throws When strict checks fail, such as setting the value of a control
-         * that doesn't exist or if you excluding the value of a control.
+         * that doesn't exist or if you exclude a value of a control that does exist.
          *
          * @param value The new value for the control that matches the structure of the group.
          * @param options Configuration options that determine how the control propagates changes
@@ -3668,7 +3854,7 @@
          * is a standalone value or a form state object with both a value and a disabled
          * status.
          *
-         * @param formState Resets the control with an initial value,
+         * @param value Resets the control with an initial value,
          * or an object that defines the initial value and disabled state.
          *
          * @param options Configuration options that determine how the control propagates changes
@@ -6689,8 +6875,7 @@
          *
          * The following example returns a control with an initial value in a disabled state.
          *
-         * <code-example path="forms/ts/formBuilder/form_builder_example.ts"
-         *   linenums="false" region="disabled-control">
+         * <code-example path="forms/ts/formBuilder/form_builder_example.ts" region="disabled-control">
          * </code-example>
          */
         FormBuilder.prototype.control = function (formState, validatorOrOpts, asyncValidator) {
@@ -6756,7 +6941,7 @@
     /**
      * @publicApi
      */
-    var VERSION = new core.Version('8.0.1');
+    var VERSION = new core.Version('8.2.14');
 
     /**
      * @license
