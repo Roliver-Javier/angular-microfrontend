@@ -16,7 +16,7 @@ import { ErrorComponent } from './error/error.component';
     BrowserModule,
     RouterModule.forRoot([
       { path: '', pathMatch: 'full', redirectTo: 'client-a/page1'},
-      { 
+      {
         path: 'client-a', children: [
           { path: 'page1', component: Page1Component },
           { path: 'page2', component: Page2Component },
@@ -40,7 +40,7 @@ import { ErrorComponent } from './error/error.component';
     ClientAWidgetComponent
   ]
 })
-export class AppModule { 
+export class AppModule {
 
   constructor(private injector: Injector) {
     const widgetElement = createCustomElement(ClientAWidgetComponent, { injector: this.injector})

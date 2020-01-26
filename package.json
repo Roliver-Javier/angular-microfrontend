@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "live-server dist/shell",
+    "start:client-a": "live-server dist/shell/assets/micro-frontends/client-a",
     "build": "npm run build:clients && npm run build:shell",
     "build:shell": "ng build --project shell",
     "test": "ng test",
