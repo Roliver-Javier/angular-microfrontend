@@ -7,11 +7,11 @@ import { Router } from '@angular/router';
   <div class="card">
 
   <div class="header">
-      <h2 class="title">Flight Search</h2>
+      <h2 class="title">Flight Searchs</h2>
   </div>
   <div class="content">
-  
- 
+
+
       <div class="form-group">
           <label>From:</label>
           <input name="from" class="form-control">
@@ -20,13 +20,13 @@ import { Router } from '@angular/router';
           <label>To:</label>
           <input name="to" class="form-control">
       </div>
-  
+
       <div class="form-group">
-          <button 
+          <button
               class="btn btn-default" (click)="search()">Search</button>
-  
+
           </div>
-  
+
   </div>
   </div>
   `
@@ -36,7 +36,7 @@ export class Page1Component  {
     constructor(private router: Router) {
 
     }
-    
+
     control = new FormControl();
 
     search() {
@@ -44,5 +44,5 @@ export class Page1Component  {
         window.dispatchEvent(new CustomEvent('client-message', { detail: 17 }));
     }
 
-  
+
 }
