@@ -37,9 +37,14 @@ speed-measure-plugin*.json
 /libpeerconnection.log
 npm-debug.log
 yarn-error.log
+yarn.lock
+/yarn.lock
 testem.log
 /typings
 
 # System Files
 .DS_Store
 Thumbs.db
+
+# Local Netlify folder
+.netlify
