@@ -147,9 +147,9 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "ngx-build-plus:build",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/client-a",
+            "outputPath": "dist/shell/assets/micro-frontends/client-a/browser",
             "index": "projects/client-a/src/index.html",
             "main": "projects/client-a/src/main.ts",
             "polyfills": "projects/client-a/src/polyfills.ts",
@@ -176,7 +176,7 @@
               "fileReplacements": [
                 {
                   "replace": "projects/client-a/src/environments/environment.ts",
-                  "with": "projects/client-a/src/environments/environment.standalone.ts"
+                  "with": "projects/client-a/src/environments/environment.prod.ts"
                 }
               ]
             },
@@ -253,6 +253,29 @@
             "exclude": [
               "**/node_modules/**"
             ]
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/shell/assets/micro-frontends/client-a/server",
+            "main": "projects/client-a/src/main.server.ts",
+            "tsConfig": "projects/client-a/tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/client-a/src/environments/environment.ts",
+                  "with": "projects/client-a/src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": {
+                "scripts": false,
+                "styles": true
+              }
+            }
           }
         }
       }

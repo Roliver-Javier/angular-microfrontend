@@ -1,8 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Injector, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, Injector, CUSTOM_ELEMENTS_SCHEMA, PLATFORM_ID, Inject } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { createCustomElement } from '@angular/elements';
 import { Page1Component } from './page1/page1.component';
 import { Page2Component } from './page2/page2.component';
 
@@ -10,10 +9,11 @@ import { RouterModule } from '@angular/router';
 import { ClientAWidgetComponent } from './client-a-widget/client-a-widget.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ErrorComponent } from './error/error.component';
+import { isPlatformBrowser } from '@angular/common';
 
 @NgModule({
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     RouterModule.forRoot([
       { path: '', pathMatch: 'full', redirectTo: 'client-a/page1'},
       {
@@ -42,9 +42,16 @@ import { ErrorComponent } from './error/error.component';
 })
 export class AppModule {
 
-  constructor(private injector: Injector) {
-    const widgetElement = createCustomElement(ClientAWidgetComponent, { injector: this.injector})
-    customElements.define('client-a-widget', widgetElement);
+  constructor(
+    private injector: Injector,
+    @Inject(PLATFORM_ID) platformId: Object
+  ) {
+
+    if (isPlatformBrowser(platformId)) {
+      const { createCustomElement } = require('@angular/elements');
+      const widgetElement = createCustomElement(ClientAWidgetComponent, { injector: this.injector})
+      customElements.define('client-a-widget', widgetElement);
+    }
   }
 
 }
