@@ -104,7 +104,8 @@ var AppComponent = /** @class */ (function () {
             clients: {
                 'client-a': {
                     loaded: false,
-                    src: 'assets/micro-frontends/client-a/main.js',
+                    //src: 'assets/micro-frontends/client-a/main.js',
+                    src: 'https://client-a.netlify.com/main.js',
                     element: 'client-a',
                     route: '/client-a'
                 },
@@ -334,12 +335,12 @@ var ShellService = /** @class */ (function () {
         element['hidden'] = !location.hash.startsWith('#' + configItem.route);
         content.appendChild(element);
         // Add script-tag(s) to load bundle
-        // const files = typeof configItem.src === 'string' ? [configItem.src] : configItem.src;
-        // files.forEach(src => {
-        //   const script = document.createElement('script');
-        //   script.src = src;
-        //   content.appendChild(script);
-        // });
+        var files = typeof configItem.src === 'string' ? [configItem.src] : configItem.src;
+        files.forEach(function (src) {
+            var script = document.createElement('script');
+            script.src = src;
+            content.appendChild(script);
+        });
     };
     ShellService.prototype.preloadClients = function () {
         // tslint:disable-next-line: forin

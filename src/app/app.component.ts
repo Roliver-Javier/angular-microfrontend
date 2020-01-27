@@ -20,7 +20,8 @@ export class AppComponent implements OnInit {
       clients: {
         'client-a': {
           loaded: false,
-          src: 'assets/micro-frontends/client-a/main.js',
+          //src: 'assets/micro-frontends/client-a/main.js',
+          src: 'https://client-a.netlify.com/main.js',
           element: 'client-a',
           route: '/client-a'
         },

@@ -20,9 +20,9 @@
     "build:client-b:externals": "ng build --extra-webpack-config webpack.externals.js --prod --project client-b --single-bundle --output-hashing none --output-path src/assets/micro-frontends/client-b",
     "build:all:externals": "npm run build:client-a:externals && npm run build:client-b:externals && npm run build:shell:externals",
 
+
     "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
     "build:client-and-server-bundles": "ng build client-a  && ng run client-a:server:production --bundleDependencies all",
-
     "compile:server": "webpack --config projects/client-a/webpack.server.config.js --progress --colors",
     "serve:ssr": "node ./dist/shell/assets/micro-frontends/client-a/server/server"
   },
