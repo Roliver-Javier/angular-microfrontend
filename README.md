@@ -3,7 +3,8 @@
 
 <h1 align="center">
   <br>
-  <a href="https://medium.com/@roliver_javier/arquitectura-sostenible-en-angular-91301259e83e">![](/src/assets/img/1_IXqGuECQPNvc34NC9VBV9Q.png)</a>
+   ![](/src/assets/img/1_IXqGuECQPNvc34NC9VBV9Q.png)
+ 
 </h1>
 
 <h4 align="center">Arquitectura Sostenible en Angular</h4><small>By Roliver Javier </small>
