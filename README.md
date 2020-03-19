@@ -25,7 +25,7 @@ Cuando hablamos de arquitectura sostenible nos referimos a un marco de trabajo q
 </p>
 
 <p>
-Cuando contamos en nuestro proyecto con un conjunto funcionalidades que están entremezcladas una con otra, no le estamos ganando mucho, debido a que si todas dependen de todas, esto no nos facilita el poder cambiar o expandir algo sin que no estemos propenso a producir fallas.
+Cuando contamos en nuestro proyecto con un conjunto de funcionalidades que están entremezcladas unas con otras, no le estamos ganando mucho, debido a que si todas dependen de ellas mismas, esto no nos facilita el poder cambiar o expandir algo sin que no estemos propensos a producir fallas.
 </p>  
 <p>
 Es por esto que la idea central que les vengo a contar esta enfocada a cómo podemos tener una arquitectura que nos ayude un poco con todo esto.
