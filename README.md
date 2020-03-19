@@ -12,7 +12,7 @@
       
 <p align="center">
   <a href="#about">About</a> •
-  <a href="#Medium">Medium</a> •
+  <a href="https://medium.com/@roliver_javier/arquitectura-sostenible-en-angular-91301259e83e">Medium</a> •
   <a href="#author">Author</a> •
 </p>
 
@@ -30,10 +30,6 @@ Cuando contamos en nuestro proyecto con un conjunto de funcionalidades que está
 <p>
 Es por esto que la idea central que les vengo a contar esta enfocada a cómo podemos tener una arquitectura que nos ayude un poco con todo esto.
 </p>
-
-
-
-## Medium
 <p align="center"> 
 Te **interesa leer este articulo**? Hechale un vistazo por Medium <a href="https://medium.com/@roliver_javier/arquitectura-sostenible-en-angular-91301259e83e">Aqui</a>
 </p>
